@@ -33,6 +33,22 @@ class Solution(object):
 
       for i in range(len(prices)):
         result.append(max_list[i]-min_list[i])
+
+#깔끔한 풀이
+
+class Solution(object):
+    def maxProfit(self, prices):
+      profit =0 
+      min_price = sys.maxsize
+
+      for price in prices:
+        min_price = min(min_price,price)
+        profit = max(profit,price-min_price)
+      
+      return profit
+
+nums =[7,1,5,3,6,4]
+print(Solution().maxProfit(nums))
       
       #리스트를 정렬
       result.sort()
