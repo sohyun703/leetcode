@@ -1,0 +1,40 @@
+class Solution(object):
+    def maxProfit(self, prices):
+      if not prices :
+        return 0
+      
+      price =0
+      left =0
+      right = len(prices)-1
+      Pmin = prices[left]
+      Pmax = prices[right]
+      min_list =[]
+      max_list =[]
+      result=[]
+
+      #작은 값 리스트 구하기
+      for i in range(len(prices)):
+        if Pmin>= prices[i]:
+          Pmin = prices[i]
+        min_list.append(Pmin)
+      
+      #큰 값 리스트 구하기
+
+      for i in range(len(prices)-1,0-1,-1):
+        if Pmax<prices[i]:
+          Pmax = prices[i]
+        max_list.append(Pmax)
+      
+      #뒤집어주기
+      max_list.reverse()
+  
+
+      #빼주자.
+
+      for i in range(len(prices)):
+        result.append(max_list[i]-min_list[i])
+      
+      #리스트를 정렬
+      result.sort()
+
+      return result[-1]
